@@ -23,22 +23,48 @@ type ComponentsContextType = {
 
 export function useCards(){
     const [components, setComponents] = useState<Components[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [notFound, setNotFound] = useState(false);
+    const [search, setSearch] = useState('');
+  
+    
     
     useEffect(() => {
+        async function loading() {
+          if (search === "") {
+            await api.get('/character')
+              .then((response) => {
+                const data = response.data.results;
 
-        function loading() {
-            api.get('/character')
-                .then((response) => {
-                    const data = response.data.results;
-                    setComponents(data);
-                });
+                setComponents(data);
+                setLoading(false);
+                setNotFound(false);
+              },
+              (error) => {
+                console.error(error);
+                setNotFound(true);
+              });
+          } else {
+            await api.get(`/character/?name=${search}`)
+              .then((response) => {
+                const data = response.data.results;
+    
+                setComponents(data);
+                setLoading(false);
+                setNotFound(false);
+              },(error) => {
+                console.error(error);
+                setNotFound(true);
+              })
+          }
         }
-        loading()
-
-    }, [])
+    
+        loading();
+      }, [search])
+    
 
    
     
 
-    return {components}
+    return {components, setComponents, search, setSearch, loading, setLoading, notFound, setNotFound}
 }

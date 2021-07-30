@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-
 export const ComponentsContext = createContext({} as ComponentsContextType);
 
 type AuthContextProps = {

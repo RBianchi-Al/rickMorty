@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ComponentsContextProvider } from './Context/componentsContext';
 
-import { Home } from "./Pages";
+import { Home } from "./Pages/Home";
 
 function App() {
   return (
