@@ -1,15 +1,16 @@
-import { Header } from "../Components/Header";
-import { List } from "../Components/List";
-import { Search } from "../Components/Search";
+
+import Header from "../Components/Header";
+import { Cards } from "../Components/List";
+
+
 
 
 export function Home(){
     return(
         <>
             <Header/>
-            <Search/>
-            <List/>
-
+    
+            <Cards />
         </>
     )
 }

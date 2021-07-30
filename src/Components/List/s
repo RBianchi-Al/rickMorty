@@ -1,0 +1,101 @@
+import { useEffect, useContext, useState } from 'react';
+import api from "../../services/api";
+import { useStyles } from './styles';
+import {
+    Card,
+    CardContent,
+    CardMedia,
+    Container,
+    ListItemText,
+    ListItemIcon,
+    Grid,
+    ListItem,
+    Typography,
+
+} from '@material-ui/core'
+
+import {ComponentsContext} from '../../Context/componentsContext'
+
+// import { database } from '../../services/firebase';
+type Components = {
+    id: number;
+    image: string;
+    name: string;
+    species: string;
+    type: string;
+  }
+  
+  type ComponentsContextType = {
+    components: Array<Components> | undefined;
+    filterComponents: (searchText: string) => Promise<void>;
+  }
+
+export function Cards() {
+  
+    const [components, setComponents] =useState<Components[]>([]);
+    
+    useEffect(() => {
+
+        function loading(){
+            api.get('/character')
+            .then((response) => {
+              const data = response.data.results;
+              setComponents(data);   
+            });
+        }
+           loading()
+
+    }, [])
+
+  
+    const classes = useStyles();
+   
+    
+    return (
+        <>
+
+<Container className={classes.cardGrid} maxWidth="md" >
+               
+               <div>
+                   <Grid  container spacing={1}>
+                       { components.map((card) => (
+                           <Grid item key={card.id} xs={12} md={4} >
+                               <Card className={classes.card}>
+                                   <CardMedia
+                                       className={classes.cardMedia}
+                                       image={card.image}
+                                       title="Image title"
+                                   />
+                                   <CardContent className={classes.cardContent}>
+                                       <Typography gutterBottom variant="h5" component="h2">
+                                           {card.name}
+                                       </Typography>
+                                       <ListItem>
+                                           <ListItemIcon>
+                                               
+                                           </ListItemIcon>
+                                           <ListItemText>{card.species  } </ListItemText>
+                                       </ListItem>
+                                       <ListItem>
+                                           <ListItemIcon>
+                                              
+                                           </ListItemIcon>
+                                           <ListItemText>{card.type} </ListItemText>
+                                       </ListItem>
+                                       
+                                       {/* <Button variant="contained" color="secondary" className={classes.button}>Excluir</Button> */}
+                                   </CardContent>
+                               </Card>
+                           </Grid>
+
+                       ))}
+                   </Grid>
+
+               </div>
+
+           </Container>
+
+
+        </>
+    )
+}

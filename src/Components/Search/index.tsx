@@ -1,5 +1,5 @@
 export function Search(){
     return(
-        <h1>Search</h1>
+      <h1>A</h1>
     )
-}
+  }
