@@ -10,8 +10,10 @@ import {
     Grid,
     ListItem,
     Typography,
+    Button
 } from '@material-ui/core'
 
+import CardViews from '../Card'
 
 export function Cards() {
 
@@ -21,7 +23,8 @@ export function Cards() {
 
     return (
         <>
-
+            
+            <CardViews/>
             <Container className={classes.cardGrid} maxWidth="md" >
                 <div>
                     <Grid container spacing={1}>
@@ -38,13 +41,16 @@ export function Cards() {
                                             {card.name}
                                         </Typography>
                                         <ListItem>
-                                            <ListItemText> {`Espécie: ${card.species}`} </ListItemText>
+                                            <ListItemText>{`Sexo: ${card.gender}`}</ListItemText>
                                         </ListItem>
                                         <ListItem>
-                                            <ListItemText>{card.type}</ListItemText>
+                                            <ListItemText> {`Espécie: ${card.species} ${card.type}`} </ListItemText>
+                                        </ListItem>
+                                        <ListItem>
+                                            <ListItemText>{card.origin.name}</ListItemText>
                                         </ListItem>
 
-                                        {/* <Button variant="contained" color="secondary" className={classes.button}>Excluir</Button> */}
+                                        <Button variant="contained" color="secondary" className={classes.button}>Favoritos</Button>
                                     </CardContent>
                                 </Card>
                             </Grid>

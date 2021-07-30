@@ -1,6 +1,6 @@
 
 import Header from "../Components/Header";
-import { Cards } from "../Components/List";
+import CardViews from '../Components/Card'
 
 
 
@@ -10,7 +10,7 @@ export function Home(){
         <>
             <Header/>
     
-            <Cards />
+            <CardViews/>
         </>
     )
 }
