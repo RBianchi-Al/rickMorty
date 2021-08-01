@@ -6,19 +6,16 @@ import {
     CardMedia,
     CardContent,
     CardActions,
-    Collapse,
     Container,
     IconButton,
     Typography,
     Grid,
 
 } from '@material-ui/core'
+import SvgIcon from '@material-ui/core/SvgIcon';
 
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useStyles } from './styles'
-import { useCards } from '../../hooks/useCards';
-
 import { useContext } from 'react'
 import { FavoritesContext } from '../../Context/favoritesContext'
 
@@ -88,7 +85,7 @@ export default function CardViews({components}: ComponentProps ) {
                                             <IconButton 
                                                 onClick={() => handleUpdateFavorites(card)}
                                                 aria-label="add to favorites">
-
+                                                
                                                  <svg xmlns="http://www.w3.org/2000/svg"
                                                     width="32" height="32"
                                                     viewBox="0 0 24 24"
@@ -107,23 +104,10 @@ export default function CardViews({components}: ComponentProps ) {
                                                 /> */}
 
                                             </IconButton>
-
-                                            <IconButton aria-label="share">
-                                                <ShareIcon />
-                                            </IconButton>
-                                            <IconButton
-                                                className={clsx(classes.expand, {
-                                                    [classes.expandOpen]: expanded,
-                                                })}
-                                                onClick={handleExpandClick}
-                                                aria-expanded={expanded}
-                                                aria-label="show more"
-                                            >
-                                                <ExpandMoreIcon />
-                                            </IconButton>
+                                                  
+                                          
                                         </CardActions>
-                                        <Collapse in={expanded} timeout="auto" unmountOnExit>
-                                            <CardContent>
+                                        <CardContent>
                                                 <Typography paragraph>Description:</Typography>
                                                 <Typography paragraph>
                                                     {`Name: ${card.name}`}
@@ -139,7 +123,6 @@ export default function CardViews({components}: ComponentProps ) {
                                                   ${card.type}`}
                                                 </Typography>
                                             </CardContent>
-                                        </Collapse>
 
                                     </Card>
                                 </Grid>
