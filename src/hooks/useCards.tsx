@@ -16,18 +16,16 @@ type Components = {
     created: Date;
 }
 
-type ComponentsContextType = {
-    components: Array<Components> | undefined;
-    filterComponents: (searchText: string) => Promise<void>;
-}
+
 
 export function useCards(){
     const [components, setComponents] = useState<Components[]>([]);
     const [loading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [search, setSearch] = useState('');
+    const [list, setList] = useState(components);
   
-    
+  
     
     useEffect(() => {
         async function loading() {
@@ -46,12 +44,17 @@ export function useCards(){
               });
           } else {
             await api.get(`/character/?name=${search}`)
+            
               .then((response) => {
                 const data = response.data.results;
     
                 setComponents(data);
                 setLoading(false);
                 setNotFound(false);
+                components.filter(
+                  (item) =>
+                    item.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+                )
               },(error) => {
                 console.error(error);
                 setNotFound(true);
@@ -63,8 +66,15 @@ export function useCards(){
       }, [search])
     
 
-   
+      const handleOrderClick = () => {
+        let newList = [...components];
     
+        newList.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+    
+        setList(newList);
+      };
+    
+      console.log(list)
 
-    return {components, setComponents, search, setSearch, loading, setLoading, notFound, setNotFound}
+    return {components, setComponents, search, setSearch, loading, setLoading, notFound, setNotFound, list }
 }

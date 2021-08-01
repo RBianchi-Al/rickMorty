@@ -22,12 +22,10 @@ export default function Header() {
   function handleLogin() {
     history.push('/')
   }
-  function handleRegister(){
-    history.push('/register')
+  function handleFavorites(){
+    history.push('/favorites')
   }
-  function handlePhones(){
-    history.push('/home')
-  }
+  
 
   return (
     <>
@@ -41,20 +39,20 @@ export default function Header() {
             <strong className={classes.titleuser}></strong> 
           </Typography>
         </ListItem>
-        {/* <Button
+        <Button
             variant="outlined"
             color="inherit"
-            onClick={handleRegister}
+            onClick={handleFavorites}
             className={classes.button}>
-            Cadastrar
+            Favoritos
           </Button>
           <Button
             variant="outlined"
             color="inherit"
-            onClick={handlePhones}
+            onClick={handleLogin}
             className={classes.button}>
-            Contatos
-          </Button> */}
+            Voltar
+          </Button>
         <Button
             variant="outlined"
             color="secondary"

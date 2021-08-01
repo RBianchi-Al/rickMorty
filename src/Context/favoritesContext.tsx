@@ -25,10 +25,10 @@ type Components = {
 }
 
 
-export function FavoritesContextProvider(props: FavoritesContextProvider) {
+export function FavoritesContextProvider({ children }: FavoritesContextProvider) {
 
     const [favorites, setFavorites] = useState<Components[]>(() => {
-        const storagedFavorites = localStorage.getItem('Personagem salvo com sucesso(LS)');
+        const storagedFavorites = localStorage.getItem('@rickMorty/favorites');
 
         if (storagedFavorites) {
             return JSON.parse(storagedFavorites);
@@ -38,27 +38,28 @@ export function FavoritesContextProvider(props: FavoritesContextProvider) {
 
     async function updateFavorites(components: Components) {
         try {
-            const componentSaved = favorites.find(componentId => componentId.id === components.id);
+            const componentSaved = favorites.find(componentsId => componentsId.id === components.id);
 
             if (!componentSaved) {
+                
                 setFavorites([...favorites, { ...components }])
-                localStorage.setItem('Personagem salvo com sucesso(LS)', JSON.stringify([...favorites, { ...components }]))
+                localStorage.setItem('@rickMorty/favorites', JSON.stringify([...favorites, { ...components }]))
                 return;
             } else {
-                const saveFavorite = favorites.filter(favoritId => favoritId.id !== components.id);
-                setFavorites(saveFavorite);
-                localStorage.setItem('Personagem salvo com sucesso(LS)', JSON.stringify(saveFavorite))
 
+                const saveFavorite = favorites.filter(favorites => favorites.id !== components.id);
+                setFavorites(saveFavorite);
+                localStorage.setItem('@rickMorty/favorites', JSON.stringify(saveFavorite))
                 return;
             }
-        } catch(err) {
-            console.log(`Erro ao atualizar: ${err}`);
+        } catch {
+            console.log(`Erro ao atualizar:`);
         }
     }
 
     return (
         <FavoritesContext.Provider value={{ favorites, updateFavorites }}>
-            {props.children}
+            {children}
         </FavoritesContext.Provider>
     );
 }

@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/jquery": "^3.5.6",
     "@types/react-router-dom": "^5.1.8"
   }
 }

@@ -16,36 +16,30 @@ type Components = {
     created: Date;
 }
 
-type ComponentsContextType = {
-    components: Array<Components> | undefined;
-    filterComponents: (searchText: string) => Promise<void>;
-}
-
 
 export function useFavorites(){
     const [loading, setLoading] = useState(true);
     const [notFavorite, setNotFavorite] = useState(false);
     const {favorites,  updateFavorites} = useContext(FavoritesContext)
+    
+    
   
-    function handleUpdateFavorites(components: Components) {
-        updateFavorites(components);
-    }
   
     useEffect(() => {
-    //   async function loadFavorites() {
-    //     if (favorites.length >= 1) {
-    //       setLoading(false);
-    //       setNotFavorite(false);
-    //     } else {
-    //       setLoading(false);
-    //       setNotFavorite(true);
-    //     }
-    //   }
+      async function loadFavorites() {
+        if (favorites.length >= 1) {
+          setLoading(false);
+          setNotFavorite(false);
+        } else {
+          setLoading(false);
+          setNotFavorite(true);
+        }
+      }
   
-    //   loadFavorites();
+      loadFavorites();
     }, [favorites])
   
     
 
-    return {updateFavorites, favorites, handleUpdateFavorites}
+    return {updateFavorites, favorites, notFavorite, loading}
 }

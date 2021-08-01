@@ -31,6 +31,20 @@ createStyles({
   gridCard:{
     marginLeft: '0px',
 
-  }
+  },
+  ativo: {
+    color: '#c10000',
+  
+    transition: theme.transitions.create('color', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    
+  },
+
+  
+  inativo: { 
+    color: '#8d8d8d'
+  },
+
 }),
 );

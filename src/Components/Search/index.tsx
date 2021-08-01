@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useStyles } from './styles'
 
+
+
 type SearchProps = {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -12,7 +14,7 @@ type SearchProps = {
 
 export default function Search({ search, setSearch }: SearchProps) {
   const classes = useStyles();
-  const { components} = useCards()
+  const { components } = useCards()
 
   return (
     <>
