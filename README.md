@@ -16,15 +16,15 @@ Sistema que visa capturar informações do desenho Rick and Morty por meio de um
 </ul>
 
 # REQUISITOS
--Deve-se criar uma aplicação React com Typescript de uma única página onde possamos:
--Buscar um personagem pelo o nome;
--Visualizar o feedback de loading enquanto a API não responde;
--Exibir mensagem de erro caso o personagem não exista;
--Exibir informações mínimas sobre o(s) personsagem(ns) caso ele(s) exista(m);
--Registrar o personagem na lista de favoritos utilizando alguma biblioteca de controle de estado global ou a Context API nativa do React;
--Visualizar a lista de personagens favoritos;
--Excluir personagem da lista;
--Responsividade
+1. Deve-se criar uma aplicação React com Typescript de uma única página onde possamos:
+2. Buscar um personagem pelo o nome;
+3. Visualizar o feedback de loading enquanto a API não responde;
+4. Exibir mensagem de erro caso o personagem não exista;
+5. Exibir informações mínimas sobre o(s) personsagem(ns) caso ele(s) exista(m);
+6. Registrar o personagem na lista de favoritos utilizando alguma biblioteca de controle de estado global ou a Context API nativa do React;
+7. Visualizar a lista de personagens favoritos;
+8. Excluir personagem da lista;
+9. Responsividade
 
 # HISTÓRIAS DE USUÁRIO
 1. Buscar personagem
