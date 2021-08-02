@@ -4,14 +4,14 @@ import CardViews from '../../Components/Card'
 import { useFavorites } from "../../hooks/useFavorites";
 import Loading from "../../Components/Loading";
 import {Typography} from '@material-ui/core'
-
+import { useStyles } from './styles';
 
 
 
 
 export function Favorites(){
     const {favorites, notFavorite, loading} = useFavorites()
-   
+    const classes = useStyles();
 
 
     return(
@@ -24,7 +24,7 @@ export function Favorites(){
           (
             notFavorite ? (
               <>
-                <Typography>Você não tem personagens favoritos</Typography>
+                <h2 className={classes.title} >Você não tem personagens favoritos</h2>
            
               </>
             ): (

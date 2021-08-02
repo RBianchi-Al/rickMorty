@@ -22,6 +22,7 @@ type User = {
   
 export function AuthContextProvider(props: AuthContextProps){
     const [user, setUser] = useState<User>()
+    
     console.log(`agora user na página auth ${user?.id}`)
 
     useEffect(()=>{     
@@ -53,15 +54,15 @@ export function AuthContextProvider(props: AuthContextProps){
 
 
      async function signInWithGoogle(){   
-
-     
-
-      const provider = new firebase.auth.GoogleAuthProvider();
+     const provider = new firebase.auth.GoogleAuthProvider();
       
       const result = await  auth.signInWithPopup(provider)    
+      
      
       if (result.user){
           const {displayName, photoURL, uid} = result.user
+          const token = result.credential?.signInMethod
+
           
           if(!displayName || !photoURL){
             throw new Error('Missing information from Google Account.')

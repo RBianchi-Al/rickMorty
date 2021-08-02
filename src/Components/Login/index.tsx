@@ -49,7 +49,7 @@ export default function Login() {
            
           </Avatar>
           <Typography component="h1" variant="h5">
-            Agenda Telefônica
+            Rick and Morty
           </Typography>
           <form className={classes.form} noValidate>
             
