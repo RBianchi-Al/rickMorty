@@ -39,7 +39,7 @@ As principais ferramentas foram *Typescript, React, Firebase, MaterialUI*
 </p>
 
 
-# Instalar as dependencias
+# Instalar as dependências
 
 ### `yarn add`
 
