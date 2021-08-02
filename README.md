@@ -35,7 +35,7 @@ Sistema que visa capturar informações do desenho Rick and Morty por meio de um
 As principais ferramentas foram *Typescript, React, Firebase, MaterialUI* 
 
 <p align="center">
-  <img width="460" height="300" src="src/assets/gif.gif">
+  <img width="460" height="300" src="src/assets/rick.gif">
 </p>
 
 
