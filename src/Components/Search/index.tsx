@@ -1,24 +1,22 @@
-import { useCards } from '../../hooks/useCards'
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { useStyles } from './styles'
-
-
+/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import React from "react";
+import { useCards } from "../../hooks/useCards";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { useStyles } from "./styles";
 
 type SearchProps = {
   search: string;
+  // eslint-disable-next-line no-undef
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
-
-
 export default function Search({ search, setSearch }: SearchProps) {
   const classes = useStyles();
-  const { components } = useCards()
-
+  const { components } = useCards();
   return (
     <>
-      
       <Autocomplete
         className={classes.box}
         id="country-select-demo"
@@ -53,8 +51,6 @@ export default function Search({ search, setSearch }: SearchProps) {
     </>
   );
 }
-
-
 
 type Components = {
   id: number;

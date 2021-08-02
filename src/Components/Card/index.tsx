@@ -1,5 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
+/* eslint-disable multiline-ternary */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+// eslint-disable-next-line no-use-before-define
+import React, { useContext } from "react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import clsx from "clsx";
 import {
     Card,
     CardHeader,
@@ -11,13 +16,15 @@ import {
     Typography,
     Grid,
 
-} from '@material-ui/core'
-import SvgIcon from '@material-ui/core/SvgIcon';
+} from "@material-ui/core";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import SvgIcon from "@material-ui/core/SvgIcon";
 
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import { useStyles } from './styles'
-import { useContext } from 'react'
-import { FavoritesContext } from '../../Context/favoritesContext'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { useStyles } from "./styles";
+
+import { FavoritesContext } from "../../Context/favoritesContext";
 
 type Components = {
     id: number;
@@ -35,24 +42,16 @@ type Components = {
 type ComponentProps= {
     components: Array<Components> | undefined;
   }
-  
- 
 
+export default function CardViews({ components }: ComponentProps) {
+    const [expanded, setExpanded] = React.useState(false);
 
-export default function CardViews({components}: ComponentProps ) {
-    const [expanded, setExpanded] = React.useState(false)
-    
     //const { components, list } = useCards()
-    const { favorites, updateFavorites } = useContext(FavoritesContext)
-    const classes = useStyles()
-
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    const { favorites, updateFavorites } = useContext(FavoritesContext);
+    const classes = useStyles();
 
     function handleUpdateFavorites(components: Components) {
-        console.log('fazer update')
+        console.log("fazer update");
         updateFavorites(components);
     }
 
@@ -60,7 +59,7 @@ export default function CardViews({components}: ComponentProps ) {
         <>
             {components !== undefined ? (
                 <div>
-                    
+
                     <Container className={classes.cardGrid} maxWidth="md" >
                         <Grid container spacing={3}>
                             {components.map((card) => (
@@ -70,7 +69,7 @@ export default function CardViews({components}: ComponentProps ) {
                                     <Card key={card.id} className={classes.root}>
                                         <CardHeader
                                             title={card.name}
-                                            subheader={new Intl.DateTimeFormat('pt-BR').format(
+                                            subheader={new Intl.DateTimeFormat("pt-BR").format(
                                                 new Date(card.created))}
                                         />
                                         <CardMedia
@@ -82,14 +81,14 @@ export default function CardViews({components}: ComponentProps ) {
                                         </CardContent>
                                         <CardActions disableSpacing>
 
-                                            <IconButton 
+                                            <IconButton
                                                 onClick={() => handleUpdateFavorites(card)}
                                                 aria-label="add to favorites">
-                                                
+
                                                  <svg xmlns="http://www.w3.org/2000/svg"
                                                     width="32" height="32"
                                                     viewBox="0 0 24 24"
-                                                    fill={`${favorites.find(components => components.id === card.id) ? '#ff2400' : 'none'}`}
+                                                    fill={`${favorites.find(components => components.id === card.id) ? "#ff2400" : "none"}`}
                                                     stroke="currentColor"
                                                     strokeWidth="2"
                                                     strokeLinecap="round"
@@ -97,15 +96,14 @@ export default function CardViews({components}: ComponentProps ) {
                                                     className="feather feather-heart"
                                                 >
                                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                                </svg> 
+                                                </svg>
                                                 {/* <FavoriteIcon
                                                     fill={`${favorites.find((components) => components.id === card.id) ? '#ff2400' : 'none'}`}
 
                                                 /> */}
 
                                             </IconButton>
-                                                  
-                                          
+
                                         </CardActions>
                                         <CardContent>
                                                 <Typography paragraph>Description:</Typography>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable no-use-before-define */
 import { createContext, ReactNode, useState } from "react";
 
 export const FavoritesContext = createContext({} as FavoriteContext);
@@ -24,11 +26,9 @@ type Components = {
     created: Date;
 }
 
-
 export function FavoritesContextProvider({ children }: FavoritesContextProvider) {
-
     const [favorites, setFavorites] = useState<Components[]>(() => {
-        const storagedFavorites = localStorage.getItem('@rickMorty/favorites');
+        const storagedFavorites = localStorage.getItem("@rickMorty/favorites");
 
         if (storagedFavorites) {
             return JSON.parse(storagedFavorites);
@@ -41,15 +41,13 @@ export function FavoritesContextProvider({ children }: FavoritesContextProvider)
             const componentSaved = favorites.find(componentsId => componentsId.id === components.id);
 
             if (!componentSaved) {
-                
-                setFavorites([...favorites, { ...components }])
-                localStorage.setItem('@rickMorty/favorites', JSON.stringify([...favorites, { ...components }]))
+                setFavorites([...favorites, { ...components }]);
+                localStorage.setItem("@rickMorty/favorites", JSON.stringify([...favorites, { ...components }]));
                 return;
             } else {
-
                 const saveFavorite = favorites.filter(favorites => favorites.id !== components.id);
                 setFavorites(saveFavorite);
-                localStorage.setItem('@rickMorty/favorites', JSON.stringify(saveFavorite))
+                localStorage.setItem("@rickMorty/favorites", JSON.stringify(saveFavorite));
                 return;
             }
         } catch {

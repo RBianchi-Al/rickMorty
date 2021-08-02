@@ -1,24 +1,21 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) => ({
     icon: {
       marginRight: theme.spacing(2),
     },
     button: {
       margin: theme.spacing(2),
-      padding: theme.spacing(1,4,1,4),
-      
+      padding: theme.spacing(1, 4, 1, 4),
     },
     title: {
-      fontSize: '12px'
-      
+      fontSize: "12px",
     },
     titleuser: {
-      fontSize: '15px'
-      
+      fontSize: "15px",
     },
-    toolbar:{
+    toolbar: {
         backgroundColor: "#161a1d",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
     },
     heroContent: {
       backgroundColor: theme.palette.background.paper,
@@ -32,12 +29,12 @@ export const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(8),
     },
     card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
     },
     cardMedia: {
-      paddingTop: '56.25%', // 16:9
+      paddingTop: "56.25%", // 16:9
     },
     cardContent: {
       flexGrow: 1,
@@ -47,4 +44,3 @@ export const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
     },
   }));
-  
