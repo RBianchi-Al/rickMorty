@@ -1,5 +1,9 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Login from './Components/Login';
 import { ComponentsContextProvider } from './Context/componentsContext';
+import PrivateRoute from './private'
+
+import {AuthContextProvider} from './Context/authContext'
 import { FavoritesContextProvider } from './Context/favoritesContext';
 import { Favorites } from './Pages/Favorites';
 
@@ -10,17 +14,19 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <AuthContextProvider>
           <FavoritesContextProvider>
-           
-              <Route path="/" exact component={Home} />
-              <Route path="/favorites" exact component={Favorites} />
+              <Route exact path="/" component={Login} />
+              <PrivateRoute path="/home" exact component={Home} />
+              <PrivateRoute path="/favorites" exact component={Favorites} />
          
           </FavoritesContextProvider>
+          </AuthContextProvider>
         </Switch>
 
       </BrowserRouter>
     </div>
-  );
+  );  
 }
 
 export default App;

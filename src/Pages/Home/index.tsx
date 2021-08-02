@@ -3,6 +3,7 @@ import Header from "../../Components/Header";
 import CardViews from '../../Components/Card'
 import Search from "../../Components/Search";
 import { useCards } from "../../hooks/useCards";
+import Loading from "../../Components/Loading";
 
 
 
@@ -17,11 +18,16 @@ export function Home(){
             <Header/>           
             <Search search={search} setSearch={setSearch}/>
             {loading ? 
-              (<h1>Carregando...</h1>)      
+              <>
+              <Loading/>
+              </>      
             : 
           (
             notFound ? (
+              
                 <h1>Tivemos um problema seu personagem...</h1>
+ 
+              
             ): (
                
                 <>

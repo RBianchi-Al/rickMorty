@@ -1,8 +1,9 @@
 
 import Header from "../../Components/Header";
 import CardViews from '../../Components/Card'
-import Search from "../../Components/Search";
 import { useFavorites } from "../../hooks/useFavorites";
+import Loading from "../../Components/Loading";
+import {Typography} from '@material-ui/core'
 
 
 
@@ -18,11 +19,14 @@ export function Favorites(){
             <Header/>           
            
             {loading ? 
-              (<h1>Carregando...</h1>)      
+               <Loading/>      
             : 
           (
             notFavorite ? (
-                <h1>Você não tem personagens favoritos</h1>
+              <>
+                <Typography>Você não tem personagens favoritos</Typography>
+           
+              </>
             ): (
                
                 <>

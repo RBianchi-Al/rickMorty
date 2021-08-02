@@ -11,16 +11,22 @@ import {
   Avatar,
 } from '@material-ui/core';
 import { useStyles } from './styles';
+import { useAuth } from '../../hooks/useAuth';
 
 
 
 export default function Header() {
   const classes = useStyles();
   const history = useHistory();
-
+  const { user,  logOut } = useAuth()
  
   function handleLogin() {
+    logOut()
     history.push('/')
+  }
+  function handleHome() {
+    
+    history.push('/home')
   }
   function handleFavorites(){
     history.push('/favorites')
@@ -33,9 +39,9 @@ export default function Header() {
       <AppBar position="relative">
         <Toolbar className={classes.toolbar}>
         <ListItem>
-        <Avatar className={classes.icon} />
+        <Avatar className={classes.icon} src={user?.avatar} />
           <Typography className={classes.title} color="inherit" noWrap>
-            Bem vind@, <br/>
+            Bem vind@, {user?.name} <br/>
             <strong className={classes.titleuser}></strong> 
           </Typography>
         </ListItem>
@@ -49,7 +55,7 @@ export default function Header() {
           <Button
             variant="outlined"
             color="inherit"
-            onClick={handleLogin}
+            onClick={handleHome}
             className={classes.button}>
             Voltar
           </Button>
